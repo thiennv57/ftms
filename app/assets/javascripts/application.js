@@ -21,6 +21,7 @@
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.ja.js
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.en-GB.js
 //= require datepicker
+//= require application_jquery
 
 $(document).on("ready", function() {
   $(".alert").delay(3000).slideUp();
