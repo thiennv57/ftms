@@ -1,0 +1,23 @@
+<div id="subjects">
+  <h3 class="text-center"><%= t "subjects.create_subject"%></h3>
+  <%= form_for [:admin, @subject] do |f| %>
+    <%= render "shared/error_messages", object: @subject %>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control", required: true%>
+        <%= f.label :description %>
+        <%= f.text_area :description, class: "form-control" %>
+      </div>
+      <div class="col-md-6">
+        <%= f.fields_for :task_masters do |builder| %>
+          <%= render "task_master_fields", f: builder %>
+        <% end %>
+        <p><%= link_to_add_fields t("subjects.dynamic_form.add"), f, :task_masters%></p>
+      </div>
+    </div>
+    <br>
+    <%= f.submit (f.object.new_record? ? t("subjects.buttons.admin.create") :
+      t("subjects.buttons.admin.update")), class: "btn btn-primary" %>
+  <% end %>
+</div>

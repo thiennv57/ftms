@@ -6,4 +6,10 @@ ja:
     buttons:
       admin:
         create: "件名を作成します"
+        edit: "編集"
+        update: "更新"
+        delete: "削除"
+        delete_confirm: "本気ですか？"
     create_subject: "件名を作成します"
+    subject_mangement: "件名の管理"
+

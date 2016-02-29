@@ -1,0 +1,4 @@
+$("#subject-<%= @subject.id %>").parent().remove();
+$("#flash").children().remove();
+$("#flash").prepend("<%= j render partial: "shared/flash_banner" %>");
+$("#show_flash").fadeOut(1000);

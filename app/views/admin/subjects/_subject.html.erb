@@ -1,15 +1,25 @@
 <div class="subject_record row">
-  <div id="subject-<%= subject.id %>" class="col-md-6">
-    <h4><%= subject.name %></h4>
-    <p><%= subject.description %></p>
-  </div>
-  <div id="subject-<%= subject.id %>" class="col-md-6">
-    <% subject.task_masters.each_with_index do |task_master, index|%>
-      <%= index + 1 %>.
-      <b><%= task_master.name %></b>
-      &nbsp:&nbsp<%= task_master.description %>
-      <br>
-    <% end %>
+  <hr>
+  <div id="subject-<%= subject.id %>">
+    <div class="col-md-5">
+      <h4><%= subject.name %></h4>
+      <p><%= subject.description %></p>
+    </div>
+    <div class="col-md-5">
+      <% subject.task_masters.each_with_index do |task_master, index|%>
+        <%= index + 1 %>.
+        <b><%= task_master.name %></b>
+        &nbsp:&nbsp<%= task_master.description %>
+        <br>
+      <% end %>
+    </div>
+    <div class="col-md-2">
+      <%= link_to t("subjects.buttons.admin.edit"), edit_admin_subject_path(subject),
+        class: "btn btn-success" %>
+      <%= link_to t("subjects.buttons.admin.delete"), admin_subject_path(subject),
+        class: "btn btn-danger",
+        method: :delete, data: {confirm: t("subjects.buttons.admin.delete_confirm")} %>
+    </div>
   </div>
 </div>
-<hr>
+

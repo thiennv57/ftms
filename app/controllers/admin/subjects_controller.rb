@@ -17,8 +17,33 @@ class Admin::SubjectsController < ApplicationController
       flash[:success] = flash_message "created"
       redirect_to admin_subjects_path
     else
-      flash.now[:failed] = t "messages.admin.create.fail"
+      flash[:failed] = flash_message "not created"
       render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @subject.update_attributes subject_params
+      flash[:success] = flash_message "updated"
+      redirect_to admin_subjects_path
+    else
+      flash[:failed] = flash_message "not updated"
+      render :edit
+    end
+  end
+
+  def destroy
+    if @subject.destroy
+      flash[:success] = flash_message "deleted"
+    else
+      flash.now[:failed] = flash_message "not deleted"
+    end
+    respond_to do |format|
+      format.html {redirect_to admin_subjects_path}
+      format.js
     end
   end
 

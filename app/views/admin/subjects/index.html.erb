@@ -1,15 +1,13 @@
 <div id="subjects">
-  <h1 class="center"><%= t "layouts.admin.subject_mangement" %></h1>
-    <div class="new-subject-form">
-      <div id="nav_subject">
-        <%= link_to t("subjects.buttons.admin.create"), new_admin_subject_path, class: "btn btn-success" %>
-      </div>
+  <h1 class="center"><%= t "subjects.subject_mangement" %></h1>
+  <div class="new-subject-form">
+    <div id="nav_subject">
+      <%= link_to t("subjects.buttons.admin.create"), new_admin_subject_path, class: "btn btn-success" %>
     </div>
-    <hr>
-    <div id="subject_section">
-      <%= render @subjects %>
-    </div>
-    <div id="nav_subject_edit">
-    </div>
-  <hr>
+  </div>
+  <div id="subject_section">
+    <%= render @subjects %>
+  </div>
+  <div id="nav_subject_edit">
+  </div>
 </div>

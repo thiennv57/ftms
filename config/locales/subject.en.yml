@@ -5,5 +5,10 @@ en:
       remove: "Remove"
     buttons:
       admin:
-        create: "Create subject"
+        create: "Create"
+        edit: "Edit"
+        update: "Update"
+        delete: "Delete"
+        delete_confirm: "Are you sure"
     create_subject: "Create subject"
+    subject_mangement: "Subject Managament"
