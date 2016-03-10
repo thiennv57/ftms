@@ -9,12 +9,10 @@
     <div class="col-md-8">
       <div class="row">
         <div class="col-md-8 col-md-offset-2 title">
-          <% unless  @course.parent.nil? %>
-            <h1><%= @course.parent.name %></h1>
-            <div class="description">
-              <%= @course.parent.description %>
-            </div>
-          <% end %>
+          <h1><%= @course.parent.name %></h1>
+          <div class="description">
+            <%= @course.parent.description %>
+          </div>
         </div>
         <div class="col-md-2 title">
           <% if @course.init? %>

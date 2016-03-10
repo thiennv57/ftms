@@ -8,6 +8,8 @@ class Admin::CoursesController < ApplicationController
 
   def new
     @parent_id = params[:parent_id]
+    @parent_name = params[:parent_name]
+    @parent_description = params[:parent_description]
   end
 
   def create

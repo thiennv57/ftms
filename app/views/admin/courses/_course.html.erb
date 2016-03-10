@@ -2,10 +2,8 @@
   <hr>
   <div id="course-<%= course.id %>">
     <div class="col-md-10">
-      <% unless course.parent.nil? %>
-        <h4><%= link_to course.parent.name, admin_course_path(course) %></h4>
-        <p><%= course.parent.description %></p>
-      <% end %>
+      <h4><%= link_to course.parent.name, admin_course_path(course) %></h4>
+      <p><%= course.parent.description %></p>
       <p>
         <i><%= t "courses.start_date" %></i>
         <%= course.start_date %>

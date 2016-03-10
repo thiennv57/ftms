@@ -10,6 +10,7 @@ class Course < ActiveRecord::Base
 
   validates :start_date, presence: true unless :master?
   validates :end_date, presence: true unless :master?
+  validates :name, uniqueness: true
 
   has_many :childrens, class_name: Course.name, foreign_key: :parent_id
   belongs_to :parent, class_name: Course.name

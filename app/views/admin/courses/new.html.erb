@@ -3,6 +3,8 @@
     <%= render "shared/error_messages", object: @course %>
     <div class="col-md-6">
       <%= f.hidden_field :parent_id, value: @parent_id %>
+      <%= f.hidden_field :parent_name, value: @parent_name %>
+      <%= f.hidden_field :parent_description, value: @parent_description %>
       <%= f.label :start_date %>
       <%= f.text_field :start_date, class: "form-control datepicker", required: true %>
       <%= f.label :end_date %>
