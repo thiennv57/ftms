@@ -3,6 +3,7 @@ class CreateCourseSubjects < ActiveRecord::Migration
     create_table :course_subjects do |t|
       t.integer :position, default: 0
       t.string :subject_name
+      t.string :subject_avatar
       t.text :subject_description
       t.text :subject_content
       t.references :subject, index: true, foreign_key: true

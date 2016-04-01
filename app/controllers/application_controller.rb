@@ -20,11 +20,11 @@ class ApplicationController < ActionController::Base
     @current_ability ||= Ability.new current_user
   end
 
-  private
-  def after_sign_in_path_for user
-    stored_location_for(user) || root_path
+  def after_sign_in_path_for resource
+    current_user.decorate.allow_access_admin ? root_path : courses_path
   end
 
+  private
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
     User.human_attribute_name "name"

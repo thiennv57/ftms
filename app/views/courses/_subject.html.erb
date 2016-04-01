@@ -1,9 +1,9 @@
 <tr>
   <td>
     <% if user_subject.init? %>
-      <%= user_subject.subject_name %>
+      <%= user_subject.course_subject_subject_name %>
     <% else %>
-      <%= link_to user_subject.subject_name, course_subject_path(@course, user_subject.subject) %>
+      <%= link_to user_subject.course_subject_subject_name, course_subject_path(@course, user_subject.subject) %>
     <% end %>
   </td>
   <td><%= user_subject.init? ? t("user_subject.status.new") : user_subject.status %></td>

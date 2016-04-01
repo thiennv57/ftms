@@ -18,10 +18,12 @@ class UserSubject < ActiveRecord::Base
 
   scope :load_user_subject, ->(user_id, course_id){where "user_id = ? AND course_id = ?", user_id, course_id}
   scope :load_users, ->status {where status: status}
+  scope :not_finish, -> user_subjects {where.not(id: user_subjects)}
   enum status: [:init, :progress, :finish]
 
   delegate :name, to: :user, prefix: true, allow_nil: true
   delegate :name, to: :subject, prefix: true, allow_nil: true
+  delegate :subject_name, to: :course_subject, prefix: true, allow_nil: true
 
   class << self
     def update_all_status status

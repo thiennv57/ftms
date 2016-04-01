@@ -1,0 +1,43 @@
+<div class="title"><%= t "subjects.create_new_task" %></div>
+<%= form_for :task, url: course_tasks_path(@course.id,
+  @course_subject.id), html: {method: :post}  do |f| %>
+  <%= render "shared/error_messages", object: @course_subject %>
+
+  <%= f.hidden_field :trainee_task, value: current_user.is_trainee? %>
+  <div class="row">
+    <div class="col-md-12">
+      <%= f.text_field :name, class: "form-control", required: true,
+        placeholder: I18n.t("tasks.form.input_task_name") %>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+      <%= f.file_field :avatar, class: "form-control" %>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+      <%= f.text_area :description, class: "form-control",
+        required: true,
+        placeholder: I18n.t("tasks.form.input_task_description") %>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+      <%= f.cktext_area :content, class: "ckeditor form-control",
+        required: true,
+        rows: 10 %>
+    </div>
+  </div>
+  <br>
+  <%= f.hidden_field :course_subject_id, value: @course_subject.id %>
+  <div class="row">
+    <div class="col-md-1 col-md-offset-10">
+      <%= f.submit t("subjects.submit.create_task"),
+        class: "btn btn-success"%>
+    </div>
+  </div>
+<% end %>

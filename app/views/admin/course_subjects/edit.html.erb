@@ -1,21 +1,59 @@
-<%= render "shared/course_tab", course: @course, active_tab: Settings.tabs.subjects %>
-
-<%= form_for @course_subject, url: admin_course_course_subject_path, method: :patch do |f| %>
-  <div class="row">
-    <%= render "shared/error_messages", object: @course_subject %>
-    <div class="col-md-12">
-      <div class="title"></div>
+<%= render "shared/course_tab", course: @course,
+  active_tab: Settings.tabs.subjects %>
+<div class="row">
+  <div class="col-md-6">
+    <div class="title">
+      <span>
+        <%= @course_subject.subject_name %>
+      </span>
     </div>
-    <div class="col-md-6">
-      <%= f.label :subject_name %>
-      <%= f.text_field :subject_name, class: "form-control", required: true %>
-      <%= f.label :subject_description %>
-      <%= f.text_area :subject_description, class: "form-control", required: true %>
-      <%= f.label :subject_content %>
-      <%= f.text_area :subject_content, class: "form-control", required: true %>
-      <br>
-      <%= f.submit (f.object.new_record? ? t("courses.buttons.admin.create")
-        : t("courses.buttons.admin.update")), class: "btn btn-primary" %>
-    </div>
+    <%= form_for @course_subject, url: admin_course_course_subject_path,
+      method: :patch do |f| %>
+      <div class="row">
+        <%= render "shared/error_messages", object: @course_subject %>
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-12">
+              <%= f.text_field :subject_name, class: "form-control",
+                required: true,
+                placeholder: I18n.t("subjects.form.input_subject_name") %>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-12">
+              <%= f.file_field :subject_avatar, class: "form-control" %>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-12">
+              <%= f.text_area :subject_description, class: "form-control",
+                required: true,
+                placeholder: I18n.t("subjects.form.input_subject_description") %>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-12">
+              <%= f.cktext_area :subject_content,
+                class: "ckeditor form-control",
+                required: true %>
+            </div>
+          </div>
+          <br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-1 col-md-offset-10">
+          <%= f.submit (f.object.new_record? ? t("subjects.buttons.admin.create")
+            : t("subjects.buttons.admin.update")),
+            class: "btn btn-primary text-right" %>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
+  <div class="col-md-6">
+    <%= render "task" %>
+  </div>
+</div>

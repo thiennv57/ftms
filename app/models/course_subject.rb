@@ -1,6 +1,7 @@
 class CourseSubject < ActiveRecord::Base
   include PublicActivity::Model
   include InitUserSubject
+  mount_uploader :subject_avatar, AvatarUploader
 
   after_create :create_tasks
   after_create :create_user_subjects_when_add_new_subject
@@ -11,7 +12,7 @@ class CourseSubject < ActiveRecord::Base
   tracked only: [:create, :destroy, :start_subject, :close_subject],
     owner: ->(controller, model) {controller.current_user},
     recipient: ->(controller, model) {model && model.course}
-  ATTRIBUTES_PARAMS = [:subject_name, :subject_description, :subject_content,
+  ATTRIBUTES_PARAMS = [:subject_name, :subject_avatar, :subject_description, :subject_content,
     :postition, :course_id]
 
   has_many :activities, as: :trackable, class_name: "PublicActivity::Activity", dependent: :destroy
@@ -29,7 +30,8 @@ class CourseSubject < ActiveRecord::Base
 
   private
   def update_subject_course
-    self.update_attributes(subject_name: subject.name, subject_description: subject.description,
+    self.update_attributes(subject_name: subject.name, subject_avatar: subject.avatar,
+      subject_description: subject.description,
       subject_content: subject.content)
   end
 

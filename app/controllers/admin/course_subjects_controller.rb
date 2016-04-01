@@ -7,6 +7,9 @@ class Admin::CourseSubjectsController < ApplicationController
   end
 
   def edit
+    @user_subjects = @course_subject.user_subjects
+    @unassign_tasks = @course_subject.tasks.not_assigned_trainee
+    @user_subjects_not_finishs = @user_subjects.not_finish(@user_subjects.finish)
   end
 
   def update
@@ -21,10 +24,10 @@ class Admin::CourseSubjectsController < ApplicationController
 
   private
   def course_subject_params
-    params.require(:course_subject).permit CourseSubject::ATTRIBUTES_PARAMS 
+    params.require(:course_subject).permit CourseSubject::ATTRIBUTES_PARAMS
   end
 
   def load_course
-    @course = Course.find params[:course_id] 
+    @course = Course.find params[:course_id]
   end
 end

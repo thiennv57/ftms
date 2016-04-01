@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20160405092217) do
   create_table "course_subjects", force: :cascade do |t|
     t.integer  "position",            limit: 4,     default: 0
     t.string   "subject_name",        limit: 255
+    t.string   "subject_avatar",      limit: 255
     t.text     "subject_description", limit: 65535
     t.text     "subject_content",     limit: 65535
     t.integer  "subject_id",          limit: 4
@@ -198,6 +199,7 @@ ActiveRecord::Schema.define(version: 20160405092217) do
     t.text     "description",         limit: 65535
     t.text     "content",             limit: 65535
     t.integer  "task_master_id",      limit: 4
+    t.boolean  "trainee_task"
     t.integer  "assigned_trainee_id", limit: 4
     t.integer  "course_subject_id",   limit: 4
     t.datetime "created_at",                        null: false

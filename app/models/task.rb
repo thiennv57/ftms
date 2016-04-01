@@ -5,14 +5,27 @@ class Task < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   ATTRIBUTES_PARAMS = [
-    :name, :description, :assigned_trainee_id, :course_subject_id
+    :name, :description, :assigned_trainee_id, :course_subject_id, :trainee_task
   ]
 
   scope :not_assigned_trainee, -> do
-    where assigned_trainee_id: nil, task_master_id: nil
+    where assigned_trainee_id: nil, task_master_id: nil, trainee_task: true
   end
 
   after_save :change_user_task
+
+  def assign_trainees_to_task
+    if task_of_trainer?
+      user_subjects = self.course_subject.user_subjects
+      user_subjects.each do |user_subject|
+        UserTask.create(task_id: self.id, user_subject_id: user_subject.id)
+      end
+    end
+  end
+
+  def task_of_trainer?
+    trainee_task == false
+  end
 
   private
   def change_user_task

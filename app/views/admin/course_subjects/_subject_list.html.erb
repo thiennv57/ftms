@@ -1,5 +1,5 @@
 <tr>
-  <td class="name"><%= link_to course_subject.subject_name, admin_course_course_subject_path(@course, course_subject) %></td>
+  <td class="name"><%= link_to course_subject.subject_name, admin_course_subject_path(@course, course_subject.subject) %></td>
   <td class="description"><%= course_subject.subject_description %></td>
   <td class="content"><%= course_subject.subject_content %></td>
   <td class="during-time"><%= "#{course_subject.subject.during_time} #{t "subjects.fields.days"}" %></td>

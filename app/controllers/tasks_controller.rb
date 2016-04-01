@@ -4,6 +4,7 @@ class TasksController < ApplicationController
   def create
     if @task.save
       flash[:success] = flash_message "created"
+      @task.assign_trainees_to_task
     else
       flash[:failed] = flash_message "not created"
     end
