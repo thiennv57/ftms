@@ -4,6 +4,12 @@ class Admin::EvaluationTemplatesController < ApplicationController
   def index
     add_breadcrumb_evaluation_templates
     @evaluation_template = EvaluationTemplate.new
+    respond_to do |format|
+      format.html
+      format.json {
+        render json: EvaluationTemplatesDatatable.new(view_context)
+      }
+    end
   end
 
   def create

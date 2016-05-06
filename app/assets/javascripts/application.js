@@ -38,6 +38,8 @@
 //= require evaluation
 //= require role
 //= require profile
+//= require evaluation_template
+//= require rank
 
 $(document).on("ready", function() {
   $(".alert").delay(3000).slideUp();

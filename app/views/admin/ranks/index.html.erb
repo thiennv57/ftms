@@ -1,29 +1,26 @@
 <%= render "shared/evaluation_tab", active_tab: Settings.tabs.rank %>
-
 <div id="ranks">
-  <p class="pull-right"><%= link_to t("rank.buttons.create"),
-    new_admin_rank_path, class: "btn btn-success" %></p>
-  <table class="table table-striped tbl-rank">
+  <div class="row">
+    <div class="col-md-12 title">
+      <%= t "layouts.admin.roles" %>
+      <span>
+        <%= link_to t("rank.buttons.new"),
+            new_admin_rank_path, class: "btn btn-success pull-right" %>
+      </span>
+    </div>
+  </div>
+  <table id="rank-tbl" class="table table-bordered display" data-source="<%= admin_ranks_url(format: "json") %>" >
     <thead>
-      <tr>
+      <tr class="active">
+        <th></th>
+        <th class="rank"><%= t "table.thead.rank" %></th>
         <th class="begin-point"><%= t "table.thead.begin_point" %></th>
         <th class="end-point"><%= t "table.thead.end_point" %></th>
-        <th class="rank"><%= t "table.thead.rank" %></th>
+        <th class="action"><%= t "table.thead.action" %></th>
         <th class="action"><%= t "table.thead.action" %></th>
       </tr>
     </thead>
     <tbody>
-      <% @ranks.each do |rank| %>
-        <tr>
-          <td class="begin-point"><%= rank.begin_point %></td>
-          <td class="end-point"><%= rank.end_point %></td>
-          <td class="rank"><%= rank.rank_value %></td>
-          <td class="action"><%= link_to t("button.edit"),
-            edit_admin_rank_path(rank), class: "btn btn-primary" %> &nbsp;
-            <%= link_to t("button.delete"), admin_rank_path(rank),
-              method: :delete, data: {confirm: t("messages.delete.confirm")}, class: "btn btn-danger" %></td>
-        </tr>
-      <% end %>
     </tbody>
   </table>
 </div>

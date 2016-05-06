@@ -4,6 +4,12 @@ class Admin::RanksController < ApplicationController
   def index
     add_breadcrumb_ranks
     @rank = Rank.new
+    respond_to do |format|
+      format.html
+      format.json {
+        render json: RanksDatatable.new(view_context)
+      }
+    end
   end
 
   def create

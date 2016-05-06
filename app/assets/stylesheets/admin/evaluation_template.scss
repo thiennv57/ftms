@@ -1,5 +1,5 @@
 #evaluation-templates {
-  .tbl-evaluation-template {
+  #evaluation-template-tbl {
     .name {
       width: 40%;
     }
@@ -7,5 +7,16 @@
       width: 20%;
       text-align: center;
     }
+  }
+
+  #evaluation-template-tbl_filter {
+    text-align: left;
+    input {
+      width: 150%;
+    }
+  }
+
+  #evaluation-template-tbl_paginate {
+    text-align: left;
   }
 }

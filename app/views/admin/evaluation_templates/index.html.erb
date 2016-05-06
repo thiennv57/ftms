@@ -1,31 +1,19 @@
 <%= render "shared/evaluation_tab", active_tab: Settings.tabs.evaluation_templete %>
-
 <div id="evaluation-templates">
-  <p class="pull-right"><%= link_to t("evaluation_template.buttons.create"),
-    new_admin_evaluation_template_path, class: "btn btn-success" %></p>
-  <table class="table table-striped tbl-evaluation-template">
+  <table id="evaluation-template-tbl" class="table table-bordered display"
+    data-source="<%= admin_evaluation_templates_url format: "json" %>" >
     <thead>
-      <tr>
+      <tr class="active">
+        <th></th>
         <th class="name"><%= t "table.thead.name" %></th>
         <th class="min-point"><%= t "table.thead.min_point" %></th>
         <th class="max-point"><%= t "table.thead.max_point" %></th>
-        <th class="action"><%= t "table.thead.action" %></th>
+        <th class="action"></th>
+        <th class="action"></th>
       </tr>
     </thead>
     <tbody>
-      <% @evaluation_templates.each do |evaluation_template| %>
-        <tr>
-          <td class="name"><%= evaluation_template.name %></td>
-          <td class="min-point"><%= evaluation_template.min_point %></td>
-          <td class="max-point"><%= evaluation_template.max_point %></td>
-          <td class="action"><%= link_to t("button.edit"), edit_admin_evaluation_template_path(evaluation_template),
-            class: "btn btn-primary" %> &nbsp;
-            <%= link_to t("button.delete"),
-              admin_evaluation_template_path(evaluation_template),
-              method: :delete, data: {confirm: t("messages.delete.confirm")},
-              class: "btn btn-danger" %></td>
-        </tr>
-      <% end %>
     </tbody>
   </table>
 </div>
+

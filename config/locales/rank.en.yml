@@ -6,6 +6,7 @@ en:
       end_point: "End point"
   rank:
     buttons:
+      new: "New"
       create: "Create"
       update: "Update"
   layouts:

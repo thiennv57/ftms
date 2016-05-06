@@ -8,4 +8,15 @@
       text-align: center;
     }
   }
+
+  #rank-tbl_filter {
+    text-align: left;
+    input {
+      width: 150%;
+    }
+  }
+
+  #rank-tbl_paginate {
+    text-align: left;
+  }
 }
